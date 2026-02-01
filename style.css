@@ -1,0 +1,219 @@
+/* --- 1. RESET Y VARIABLES --- */
+:root {
+    --primary-color: #1A1A1A;
+    --accent-color: #E65100; /* Naranja corporativo fiel a tu badge */
+    --text-muted: #666666;
+    --bg-light: #F9F9F9;
+    --border-color: #EEEEEE;
+    --dashed-border: #CCCCCC;
+    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    line-height: 1.5;
+    color: var(--primary-color);
+    background-color: #D1D5DB; /* Fondo gris para resaltar el "folio" A4 */
+    padding: 40px 20px;
+}
+
+/* --- 2. CONTENEDOR TIPO FOLIO (A4) --- */
+.cv {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    padding: 60px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* --- 3. HEADER (BEM: cv__header) --- */
+.cv__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+}
+
+.cv__name {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+}
+
+.cv__badge {
+    background-color: var(--accent-color);
+    color: #FFFFFF;
+    padding: 6px 14px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+/* --- 4. LAYOUT GRID --- */
+.cv__container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 50px;
+}
+
+/* --- 5. BLOQUES DE CONTENIDO --- */
+.cv__section-title {
+    font-size: 14px;
+    background: var(--bg-light);
+    padding: 4px 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.cv__item {
+    margin-bottom: 30px;
+}
+
+.cv__item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.cv__item-company {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.cv__item-date {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.cv__item-role {
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.cv__list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.cv__list li {
+    font-size: 14px;
+    margin-bottom: 6px;
+    position: relative;
+    padding-left: 15px;
+}
+
+.cv__list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+/* --- 6. CAJA DE LOGROS (Fiel al PDF) --- */
+.cv__highlights {
+    border: 1px dashed var(--dashed-border);
+    padding: 15px;
+    margin-top: 15px;
+    background-color: #FCFCFC;
+}
+
+.cv__highlights-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.cv__list--highlights li {
+    font-size: 13px;
+    color: #333;
+}
+
+/* --- 7. SIDEBAR (Habilidades y Formación) --- */
+.cv__skills-list {
+    list-style: none;
+}
+
+.cv__skills-list li {
+    font-size: 14px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.cv__edu-item {
+    margin-bottom: 20px;
+}
+
+.cv__edu-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.cv__edu-info {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+/* --- 8. FOOTER / BRANDS --- */
+.cv__footer {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.cv__footer-text {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    color: #999;
+}
+
+.cv__brands {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-weight: 800;
+    font-size: 13px;
+    color: #BBB;
+    margin-bottom: 20px;
+}
+
+.cv__contact {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* --- 9. RESPONSIVE (Móviles) --- */
+@media (max-width: 768px) {
+    body { padding: 0; }
+    .cv { padding: 30px 20px; }
+    .cv__header { flex-direction: column; align-items: flex-start; gap: 15px; }
+    .cv__container { grid-template-columns: 1fr; gap: 30px; }
+    .cv__item-header { flex-direction: column; }
+    .cv__name { font-size: 28px; }
+}
+
+/* --- 10. MODO IMPRESIÓN (A4 Perfecto) --- */
+@media print {
+    body { background: none; padding: 0; }
+    .cv { box-shadow: none; width: 100%; padding: 0; }
+}
