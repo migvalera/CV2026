@@ -33,15 +33,20 @@
 }
 
 /* Estética Minimalista: Bordes muy suaves y fondo off-white */
+/* Estado inicial: Invisible y desplazado hacia abajo */
 .card {
-    background: #F2F2F2;
-    border-radius: 32px; /* Super redondeado */
-    padding: 32px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-decoration: none;
-    color: inherit;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 
+        opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), 
+        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+        background-color 0.3s ease;
+}
+
+/* Estado final: Activado por el JS al hacer scroll */
+.card--visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .card--main { background: #FFFFFF; border: 1px solid #EAEAEA; }
